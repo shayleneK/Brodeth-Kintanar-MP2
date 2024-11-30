@@ -6,7 +6,7 @@
 extern void kernel_asm(long long int n, double* X, double* Y, double* Z, double A);
 
 //c function
-static void kernel_c(long long int n, double* X, double* Y, double* Z, double A) {
+void kernel_c(long long int n, double* X, double* Y, double* Z, double A) {
 	int i;
 	for (i = 0; i < n; i++) {
 		Z[i] = ((A * X[i]) + Y[i]);
