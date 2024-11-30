@@ -31,9 +31,10 @@ int main() {
 	double *Z;
 
 	X = (double*)malloc(ARRAY_BYTES);
-	if (X == NULL) { //test to see if malloc fails --> exit the program if so
+	//test to see if malloc fails (if array size is too big for the memory) --> exit the program if so
+	if (X == NULL) { 
 		printf("Memory allocation failed for X\n");
-		return 1; 
+		return 1;
 	}
 	Y = (double*)malloc(ARRAY_BYTES);
 	if (Y == NULL) {
@@ -43,29 +44,22 @@ int main() {
 	Z = (double*)malloc(ARRAY_BYTES);
 	if (Z == NULL) {
 		printf("Memory allocation failed for Z\n");
-		return 1; 
+		return 1;
 	}
+	
+
+	
 	//C initialize arrays
 	for (i = 0; i < ARRAY_SIZE; i++) {
-		//double x = 1.0;
 		X[i] = 1.0 + i;
-	}
-
-	for (i = 0; i < ARRAY_SIZE; i++) {
-		//double y = 11.0;
 		Y[i] = 11.0 + i;
-	}
-
-	for (i = 0; i < ARRAY_SIZE; i++) {
 		Z[i] = 0;
 	}
 
 	//C
-	//call clock
+
 	start = clock();
-
 	kernel_c(ARRAY_SIZE, X, Y, Z, A);
-
 	end = clock();
 
 	//in miliseconds
@@ -83,25 +77,15 @@ int main() {
 
 	//Assembly initialize
 	for (i = 0; i < ARRAY_SIZE; i++) {
-		//double x = 1.0;
 		X[i] = 1.0 + i;
-	}
-
-	for (i = 0; i < ARRAY_SIZE; i++) {
-		//double y = 11.0;
 		Y[i] = 11.0 + i;
-	}
-
-	for (i = 0; i < ARRAY_SIZE; i++) {
 		Z[i] = 0;
 	}
 
+	
 	//Assembly 
-	//start clock
 	start = clock();
-
 	kernel_asm(ARRAY_SIZE, X, Y, Z, A);
-
 	end = clock();
 
 	time_taken = ((double)(end - start) * 1000 / CLOCKS_PER_SEC);
@@ -114,7 +98,7 @@ int main() {
 	}
 	printf("Kernel Assembly Function Time : %f ms \n ", time_taken);
 
-	//release memory allocated to the arrays --> for more memory space 
+	//Release memory allocated to the arrays --> for more memory space 
 	free(X);
 	free(Y);
 	free(Z);
