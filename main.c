@@ -3,9 +3,9 @@
 #include <time.h> 
 
 //extern void asmfunc();
-extern void kernel_asm(int n, double* X, double* Y, double* Z, double A);
+extern void kernel_asm(long long int n, double* X, double* Y, double* Z, double A);
 
-static void kernel_c(int n, double* X, double* Y, double* Z, double A) {
+static void kernel_c(long long int n, double* X, double* Y, double* Z, double A) {
 	int i;
 	for (i = 0; i < n; i++) {
 		Z[i] = ((A * X[i]) + Y[i]);
@@ -14,25 +14,57 @@ static void kernel_c(int n, double* X, double* Y, double* Z, double A) {
 };
 
 int main() {
+
+	//initialize                        //2^20
+	unsigned long long int ARRAY_SIZE = 1048576;
+	unsigned long long int ARRAY_BYTES = ARRAY_SIZE * sizeof(double);
 	double A = 2.0; //constant A
-	int n = 3; //size 
-	int i; //counter
+	long long int i; //counter
 
 	//Initialize clock
 	clock_t start, end;
 	double time_taken;
 
-	//C initialize
-	double X[] = { 1.0, 2.0, 3.0 };
-	double Y[] = { 11.0, 12.0, 13.0 };
-	double Z[3];
+	//declare arrays
+	double *X;
+	double *Y;
+	double *Z;
 
+	X = (double*)malloc(ARRAY_BYTES);
+	if (X == NULL) { //test to see if malloc fails --> exit the program if so
+		printf("Memory allocation failed for X\n");
+		return 1; 
+	}
+	Y = (double*)malloc(ARRAY_BYTES);
+	if (Y == NULL) {
+		printf("Memory allocation failed for Y\n");
+		return 1;
+	}
+	Z = (double*)malloc(ARRAY_BYTES);
+	if (Z == NULL) {
+		printf("Memory allocation failed for Z\n");
+		return 1; 
+	}
+	//C initialize arrays
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		//double x = 1.0;
+		X[i] = 1.0 + i;
+	}
+
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		//double y = 11.0;
+		Y[i] = 11.0 + i;
+	}
+
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		Z[i] = 0;
+	}
 
 	//C
 	//call clock
 	start = clock();
 
-	kernel_c(n, X, Y, Z, A);
+	kernel_c(ARRAY_SIZE, X, Y, Z, A);
 
 	end = clock();
 
@@ -41,23 +73,34 @@ int main() {
 
 
 	//C printing
-	printf("Kernel C function ==> Z: ");
+	printf("Kernel C function ==> Z: \n");
 
-	for (i = 0; i < n; i++) {
-		printf("%f\n", Z[i]);
+	for (i = 0; i < 10; i++) {
+		printf("Z[%lld] = %f\n", i, Z[i]);
 	}
 	printf("Kernel C Function Time : %f ms\n", time_taken);
 
 
 	//Assembly initialize
-	X[0] = 1.0; X[1] = 2.0; X[2] = 3.0;
-	Y[0] = 11.0; Y[1] = 12.0; Y[2] = 13.0;
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		//double x = 1.0;
+		X[i] = 1.0 + i;
+	}
+
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		//double y = 11.0;
+		Y[i] = 11.0 + i;
+	}
+
+	for (i = 0; i < ARRAY_SIZE; i++) {
+		Z[i] = 0;
+	}
 
 	//Assembly 
 	//start clock
 	start = clock();
 
-	kernel_asm(n, X, Y, Z, A);
+	kernel_asm(ARRAY_SIZE, X, Y, Z, A);
 
 	end = clock();
 
@@ -65,11 +108,16 @@ int main() {
 
 
 	//Assembly Print
-	printf("Kernel Assembly function ==> Z: ");
-	for (i = 0; i < n; i++) {
-		printf("%f\n", Z[i]);
+	printf("Kernel Assembly function ==> Z: \n");
+	for (i = 0; i < 10; i++) {
+		printf("Z[%lld] = %f\n", i, Z[i]);
 	}
 	printf("Kernel Assembly Function Time : %f ms \n ", time_taken);
+
+	//release memory allocated to the arrays --> for more memory space 
+	free(X);
+	free(Y);
+	free(Z);
 
 	return 0;
 }
