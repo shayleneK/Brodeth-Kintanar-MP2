@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <time.h> 
 
-//extern void asmfunc();
+//assembly function
 extern void kernel_asm(long long int n, double* X, double* Y, double* Z, double A);
 
+//c function
 static void kernel_c(long long int n, double* X, double* Y, double* Z, double A) {
 	int i;
 	for (i = 0; i < n; i++) {
