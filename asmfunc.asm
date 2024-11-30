@@ -1,7 +1,9 @@
 section .text
-global asm
+bits 64
+default rel
+global kernel_asm
 
-asm:
+kernel_asm:
     mov rax, rcx            ; Load n (number of elements) into rax
     mov rsi, rdx            ; Pointer to X
     mov rdx, r8             ; Pointer to Y
@@ -27,3 +29,4 @@ loop_start:
 
 loop_end:
     ret
+
