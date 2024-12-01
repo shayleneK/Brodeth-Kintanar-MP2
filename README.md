@@ -37,3 +37,7 @@ Brandao, H. and Siva B (n.d.). What are the trade-offs between using C and Assem
 
 Smith S. (n.d.) The Scientists and Engineer’s Guide to Digital Signal Processing. Chapter 28: C versus Assembly. Retrieved from:   https://www.dspguide.com/ch28/5.htm
 
+## Members
+Charlize Kirsten M. Brodeth
+Shaylene Cassandra G. Kintanar
+
