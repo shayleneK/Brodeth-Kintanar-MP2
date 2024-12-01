@@ -19,5 +19,5 @@
 #### Performance
 ![Test Case](TestCases/2^28-30x.png)
 ## Comparative Analysis
--- better to include table here w/ summary ng average --
+![Average Times](TestCases/AverageTime.png)
 By examining the averages of the execution times of the kernel, it seems that generally assembly is quicker than C in performing the kernel program. Furthermore, we can see that as the vector size increases, the performance gap between the two languages also increases. This is evidently seen in the largest vector size, 2^28 where the average for assembly is significantly lower than the average for C.
