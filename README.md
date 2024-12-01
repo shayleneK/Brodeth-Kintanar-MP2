@@ -39,5 +39,6 @@ Smith S. (n.d.) The Scientists and Engineer’s Guide to Digital Signal Processi
 
 ## Members
 Charlize Kirsten M. Brodeth
+
 Shaylene Cassandra G. Kintanar
 
