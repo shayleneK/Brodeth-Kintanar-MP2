@@ -3,21 +3,27 @@
 
 ## Performance Analysis
 * To analyze the performances effectively, the program was run 30 times on kernel sizes, 2^20, 2^24, and 2^28. Instead of using 2^30 as a kernel size, 2^28 was used due to the limitations of our machines. After this, the average of the 30 runs were taken.
-### 2^20 vector size
+### _2^20 vector size_
 #### Correctness Check
 ![Test Case](TestCases/2^20-CorrectnessCheck.png)
 #### Performance
 ![Test Case](TestCases/2^20-30x.png)
-### 2^20 vector size
+### _2^24 vector size_
 #### Correctness Check
 ![Test Case](TestCases/2^24-CorrectnessCheck.png)
 #### Performance
 ![Test Case](TestCases/2^24-30x.png)
-### 2^28 vector size
+### _2^28 vector size_
 #### Correctness Check
 ![Test Case](TestCases/2^28-CorrectnessCheck.png)
 #### Performance
 ![Test Case](TestCases/2^28-30x.png)
 ## Comparative Analysis
 ![Average Times](TestCases/AverageTime.png)
+
+
 By examining the averages of the execution times of the kernel, it seems that generally assembly is quicker than C in performing the kernel program. Furthermore, we can see that as the vector size increases, the performance gap between the two languages also increases. This is evidently seen in the largest vector size, 2^28 where the average for assembly is significantly lower than the average for C.
+
+[Video Link](https://www.canva.com/design/DAGX98KcIX4/hIr1zLKzp09n9SVFOJQ3Zw/edit?utm_content=DAGX98KcIX4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+[Test Cases Sheet](https://docs.google.com/spreadsheets/d/1edHS8W2h-kov1z-2XiyYBnptQEsEYxSvrnSPEkDHJtU/edit?gid=1606487804#gid=1606487804)
