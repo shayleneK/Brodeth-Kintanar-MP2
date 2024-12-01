@@ -27,11 +27,13 @@ By examining the averages of the execution times of the kernel, it seems that ge
 
 In conclusion, although coding in C can provide more convenience and a less error prone experience, assembly is superior in terms of optimizing performance especially when processing large datasets. 
 
+## Video 
 [Video Link](https://www.canva.com/design/DAGX98KcIX4/hIr1zLKzp09n9SVFOJQ3Zw/edit?utm_content=DAGX98KcIX4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
+## Test Cases
 [Test Cases Sheet](https://docs.google.com/spreadsheets/d/1edHS8W2h-kov1z-2XiyYBnptQEsEYxSvrnSPEkDHJtU/edit?gid=1606487804#gid=1606487804)
 
-Sources:
+## Sources:
 
 Brandao, H. and Siva B (n.d.). What are the trade-offs between using C and Assembly?. Retrieved from:  https://www.linkedin.com/advice/3/what-trade-offs-between-using-c-assembly-skills-computer-science-ljvrf#:~:text=Assembly%20code%20can%20be%20more,operating%20systems%2C%20or%20device%20drivers.
 
